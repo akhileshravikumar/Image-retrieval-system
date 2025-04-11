@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Image Search Using BM25, VSM and LM</h1>
+        <div class="search-container">
+            <form id="search-form">
+                <select id="model" name="model">
+                <option value="bm25">BM25</option>
+                <option value="vsm">VSM</option>
+                <option value="lm">Language Model</option>
+                </select>
+                <input type="text" id="query" name="query" placeholder="Enter search query" required>
+                <button type="submit">Search</button>
+                <button type="reset" id="clear-button">Clear</button>
+            </form>
+        </div>
+
+        <div id="results-container">
+            <h2>Top Results</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#search-form').on('submit', function(e) {
+                e.preventDefault();
+
+                let query = $('#query').val();
+                let model = $('#model').val();
+
+                $.ajax({
+                    url: "/search",
+                    method: "POST",
+                    data: {
+                        query: query,
+                        model: model
+                    },
+                    success: function(response) {
+                        $('#results').empty();
+
+                        if (response.results.length === 0) {
+                            $('#results').append("<p>No results found.</p>");
+                        } else {
+                            response.results.forEach(function(result) {
+                                let resultHtml = `
+                                    <div class="image-card">
+                                        <a href="${result.source_url}" target="_blank">
+                                            <img src="static/images/${result.image}" alt="${result.alt}" />
+                                        </a>
+                                        <div class="image-info">
+                                            <p><strong>Score:</strong> ${result.score}</p>
+                                            <p><strong>Title:</strong> ${result.title}</p>
+                                            <p><strong>Alt:</strong> ${result.alt}</p>
+                                            <p><strong>Context:</strong> ${result.context}</p>
+                                        </div>
+                                    </div>
+                                `;
+                                $('#results').append(resultHtml);
+                            });
+                        }
+                    },
+                    error: function() {
+                        alert("An error occurred while fetching results.");
+                    }
+                });
+            });
+
+            // Reset search input on "Clear"
+            $('#clear-button').on('click', function() {
+                $('#query').val('');
+                $('#results').empty();
+            });
+        });
+    </script>
+</body>
+</html>
