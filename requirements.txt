@@ -1,0 +1,5 @@
+Flask==3.0.0
+nltk==3.8.1
+requests==2.31.0
+python-dotenv==1.0.0  # Optional for environment variables
+gunicorn==21.2.0      # Required for deployment (e.g., Render)
