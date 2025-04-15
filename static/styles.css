@@ -39,19 +39,19 @@ body {
 }
 
 #query {
-    flex: 1;
-    padding: 0.8rem;
-    border: 2px solid #8E1616;
-    border-radius: 5px;
-    font-size: 1rem;
-    min-width: 250px;
-    background: rgba(232, 201, 153, 0.1);
-    color: #F8EEDF;
+    flex: 1 !important;
+    padding: 0.8rem !important;
+    border: 2px solid #8E1616 !important;
+    border-radius: 5px !important;
+    font-size: 1rem !important;
+    min-width: 250px !important;
+    background: rgba(232, 201, 153, 0.1) !important;
+    color: #F8EEDF !important;
 }
 
 #model option {
-    color: #F8EEDF; /* Black text for options */
-    background-color: #000000 ; /* Light background for contrast */
+    color: #F8EEDF;
+    background-color: #000000 ; 
 }
 
 #query:focus {
