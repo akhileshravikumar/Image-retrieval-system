@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F4F8D3;
+    background-color: #000000;
+    color: #E8C999;
     min-height: 100vh;
 }
 
@@ -15,7 +16,7 @@ body {
 
 .heading {
     text-align: center;
-    color: #2c3e50;
+    color: #F8EEDF;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     font-family: 'Poppins', sans-serif;
@@ -24,10 +25,10 @@ body {
 }
 
 .search-container {
-    background: white;
+    background: rgba(142, 22, 22, 0.1);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8E1616;
     margin-bottom: 2rem;
 }
 
@@ -40,22 +41,31 @@ body {
 #query {
     flex: 1;
     padding: 0.8rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #8E1616;
     border-radius: 5px;
     font-size: 1rem;
     min-width: 250px;
+    background: rgba(232, 201, 153, 0.1);
+    color: #F8EEDF;
+}
+
+#model option {
+    color: #F8EEDF; /* Black text for options */
+    background-color: #000000 ; /* Light background for contrast */
 }
 
 #query:focus {
     outline: none;
-    border-color: #8E7DBE;
+    border-color: #F8EEDF;
+    background: rgba(232, 201, 153, 0.2);
 }
 
 #model {
     padding: 0.8rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #8E1616;
     border-radius: 5px;
-    background: white;
+    background: rgba(232, 201, 153, 0.1);
+    color: #F8EEDF;
     font-size: 1rem;
     cursor: pointer;
 }
@@ -66,31 +76,31 @@ button[type="submit"], #clear-button {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 button[type="submit"] {
-    background-color: #f79999;
-    color: black;
+    background-color: #8E1616;
+    color: #F8EEDF;
 }
 
 button[type="submit"]:hover {
-    background-color: #F7CFD8;
-    transform: translateY(-1px);
+    background-color: #F8EEDF;
+    color: #8E1616;
 }
 
 #clear-button {
-    background-color: #8e73d8;
-    color: white;
+    background-color: #E8C999;
+    color: #000000;
 }
 
 #clear-button:hover {
-    background-color: #9999d8;
-    transform: translateY(-1px);
+    background-color: #F8EEDF;
+    color: #8E1616;
 }
 
-#results-container h2 {
-    color: #34495e;
+#results-container h3 {
+    color: #F8EEDF;
     margin-bottom: 1.5rem;
     font-family: 'Poppins', sans-serif;
 }
@@ -102,22 +112,23 @@ button[type="submit"]:hover {
 }
 
 .image-card {
-    background: white;
+    background: rgba(142, 22, 22, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8E1616;
     transition: transform 0.2s;
 }
 
 .image-card:hover {
     transform: translateY(-5px);
+    background: rgba(142, 22, 22, 0.2);
 }
 
 .image-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-bottom: 3px solid #3498db;
+    border-bottom: 3px solid #8E1616;
 }
 
 .image-info {
@@ -126,15 +137,16 @@ button[type="submit"]:hover {
 
 .image-info p {
     margin: 0.5rem 0;
-    color: #555;
+    color: #E8C999;
     font-size: 0.9rem;
 }
 
 .image-info p strong {
-    color: #2c3e50;
+    color: #F8EEDF;
     margin-right: 0.5rem;
 }
 
+/* Keep existing media queries the same */
 @media (max-width: 768px) {
     #search-form {
         flex-direction: column;
